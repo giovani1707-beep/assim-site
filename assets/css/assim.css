@@ -274,8 +274,8 @@
 @font-face { font-family: "Oswald"; src: url("../fonts/Oswald-latin-400-700.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
 
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--surface-canvas); }
-.frame { position: relative; max-width: 1366px; min-height: 100vh; margin: 0 auto; background: var(--white); overflow-x: clip; display: flex; flex-direction: column; }
+body { margin: 0; background: var(--white); }
+.frame { position: relative; min-height: 100vh; background: var(--white); overflow-x: clip; display: flex; flex-direction: column; }
 .skip { position: absolute; left: -999px; top: 8px; z-index: 100; }
 .skip:focus { left: 16px; }
 a { color: inherit; }
@@ -449,6 +449,9 @@ img { max-width: 100%; }
 .fab-wrap { position: fixed; right: 28px; bottom: 28px; z-index: 60; }
 .as-fab svg { width: 32px; height: 32px; flex: none; }
 .as-scrim { position: fixed; inset: 0; z-index: 80; }
+.as-modal { width: 760px; }
+.as-modal__options { grid-template-columns: repeat(3, 1fr); }
+.as-option--prod { background: var(--orange-500); color: var(--orange-900); }
 .as-modal__q { margin: 0; padding-right: 48px; }
 .as-option:focus-visible, .as-modal__close:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
@@ -505,3 +508,35 @@ img { max-width: 100%; }
   footer[data-screen-label="Footer"],footer[data-footer]{padding:32px 24px 16px !important;margin-left:8px !important;margin-right:8px !important}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+
+/* Timeline */
+.tl { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.tl__item { display: grid; grid-template-columns: 148px 1fr; gap: var(--space-6); align-items: start; padding: var(--space-6); border-radius: var(--radius-lg); background: var(--surface-page); }
+.tl__year { font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 44px; letter-spacing: -1px; text-transform: uppercase; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.tl__body { display: flex; flex-direction: column; gap: var(--space-2); align-items: flex-start; }
+.tl__title { margin: 0; font: var(--text-card-title); font-size: 24px; line-height: 28px; text-transform: uppercase; letter-spacing: -0.5px; }
+/* People */
+.people { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: var(--space-2); }
+.person { border-radius: var(--radius-md); background: var(--white); padding: 16px; display: flex; flex-direction: column; gap: 4px; }
+.person__role { font-size: 12px; font-weight: 700; line-height: 1; letter-spacing: 0.2px; text-transform: uppercase; color: var(--ink-muted); }
+.person__name { font-family: var(--font-display); font-weight: 600; font-size: 20px; line-height: 24px; text-transform: uppercase; letter-spacing: -0.3px; }
+/* Obligations */
+.obrs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: var(--space-4); }
+.obr { position: relative; display: flex; flex-direction: column; gap: var(--space-2); align-items: flex-start; padding: var(--space-6); border-radius: var(--radius-lg); background: var(--orange-200); color: var(--orange-900); text-decoration: none; transition: box-shadow .2s; }
+a.obr:hover { box-shadow: var(--shadow-press-soft); }
+a.obr:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.obr__t { margin: 0; font: var(--text-card-title); font-size: 24px; line-height: 28px; text-transform: uppercase; letter-spacing: -0.5px; }
+.obr__go { position: absolute; right: 20px; top: 20px; display: flex; }
+.obr__go svg { width: 24px; height: 24px; }
+.names { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 4px 24px; font: var(--text-small); }
+.names li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+/* FAQ page */
+.faq-groups { display: flex; flex-direction: column; gap: var(--space-10); }
+.faq-group { display: flex; flex-direction: column; gap: var(--space-4); }
+.faq-group .as-faq__item { background: var(--surface-page); }
+.as-faq__a a, .names + .empty a { color: var(--blue-900); font-weight: 700; }
+@media (max-width: 760px) {
+  .tl__item { grid-template-columns: 1fr; gap: var(--space-2); padding: var(--space-4); }
+  .tl__year { font-size: 32px; line-height: 36px; }
+  #historia .split > .stack { position: static !important; }
+}
